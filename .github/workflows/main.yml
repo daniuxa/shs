@@ -8,7 +8,7 @@ on:
 
 env:
   AZURE_WEBAPP_BACKEND_NAME: secrets-hys
-  AZURE_WEBAPP_BAKEND_PACKAGE_PATH: "./publish"
+  AZURE_WEBAPP_BAKEND_PACKAGE_PATH: "./publish-backend"
 
 jobs:
   publish:
@@ -36,4 +36,4 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_BACKEND_NAME }}
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_BACKEND }}
-          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+          package: "${{ env.AZURE_WEBAPP_BAKEND_PACKAGE_PATH }}"
