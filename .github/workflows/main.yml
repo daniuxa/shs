@@ -7,8 +7,8 @@ on:
     - ci-cd-backend
 
 env:
-  AZURE_WEBAPP_NAME: secrets-hys
-  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+  AZURE_WEBAPP_BACKEND_NAME: secrets-hys
+  AZURE_WEBAPP_BAKEND_PACKAGE_PATH: "./publish-backend"
 
 jobs:
   publish:
@@ -29,11 +29,11 @@ jobs:
         run: dotnet build ./SecretStoreHys.sln --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish ./SecretStoreHys.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish ./SecretStoreHys.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_BAKEND_PACKAGE_PATH }}'
 
-      - name: Deployment
-        uses: azure/webapps-deploy@v2
+      - name: Deployment backend
+        uses: azure/webapps-deploy@v3
         with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          app-name: ${{ env.AZURE_WEBAPP_BACKEND_NAME }}
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE_BACKEND }}
           package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
