@@ -1,0 +1,31 @@
+name: Publish 🚀
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - ci-cd-backend
+
+env:
+  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+          
+      - name: Restore
+        run: dotnet restore ./SecretStoreHys.sln
+        
+      - name: Build
+        run: dotnet build ./SecretStoreHys.sln --configuration Release --no-restore
+        
+      - name: Publish
+        run: dotnet publish ./SecretStoreHys.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
