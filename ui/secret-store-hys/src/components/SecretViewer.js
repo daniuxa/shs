@@ -22,7 +22,7 @@ export default function SecretViewer() {
 
     axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
     axios
-    .get(process.env.REACT_APP_BACKEND_HOST + "/Secret/" + id + "?pin=" + pinCode)
+    .get(process.env.REACT_APP_API_URL + "/Secret/" + id + "?pin=" + pinCode)
       .then((response) => {
         if (response.status !== 200) {
           if (response.status === 404) {
