@@ -74,7 +74,7 @@ export default function SecretCreator() {
     };
     axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
     axios
-      .post("http://localhost:5005/api/Secret", article)
+    .post(process.env.REACT_APP_BACKEND_HOST + "/Secret", article)
       .then((response) => {
         if (response.status !== 200) {
           showError("Failed to create secret", "Error");
