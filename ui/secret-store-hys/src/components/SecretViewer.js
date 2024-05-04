@@ -1,6 +1,5 @@
 import { Button } from "primereact/button";
 import { useParams } from "react-router";
-
 import { InputTextarea } from "primereact/inputtextarea";
 import { Password } from "primereact/password";
 import React, { useState, useRef } from "react";
@@ -25,7 +24,6 @@ export default function SecretViewer() {
     axios
     .get(process.env.REACT_APP_BACKEND_HOST + "/Secret/" + id + "?pin=" + pinCode)
       .then((response) => {
-        console.log(response);
         if (response.status !== 200) {
           if (response.status === 404) {
             showError("Secret is not found", "Error");

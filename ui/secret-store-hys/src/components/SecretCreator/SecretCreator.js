@@ -14,15 +14,12 @@ export default function SecretCreator() {
   const [secretLink, setSecretLink] = useState("");
   const [content, setContent] = useState("");
   const [pinCode, setPinCode] = useState("");
-  const cities = [
+  const measurments = [
     { name: "Minutes", code: "M" },
     { name: "Hours", code: "H" },
     { name: "Days", code: "D" },
   ];
-  const [selectedMeasurement, setSelectedMeasurement] = useState({
-    name: "Minutes",
-    code: "M",
-  });
+  const [selectedMeasurement, setSelectedMeasurement] = useState(measurments[0]);
 
   const [measurementValue, setMeasurementValue] = useState(10);
 
@@ -42,7 +39,9 @@ export default function SecretCreator() {
       return;
     }
 
-    if (selectedMeasurement.code === "D" && measurementValue >= 99) {
+    if ((selectedMeasurement.code === "D" && measurementValue >= 100) ||
+        (selectedMeasurement.code === "H" && measurementValue >= 2400) ||
+        (selectedMeasurement.code === "M" && measurementValue >= 144000)) {
       showError("Expiration date is too big.");
       return;
     }
@@ -59,9 +58,9 @@ export default function SecretCreator() {
       case "D":
         expireDate.setDate(currentDate.getDate() + measurementValue);
         break;
+      default:
+        return;
     }
-
-    console.log(expireDate);
 
     sendRequest(content, pinCode, expireDate);
   }
@@ -148,7 +147,7 @@ export default function SecretCreator() {
               <Dropdown
                 value={selectedMeasurement}
                 onChange={(e) => setSelectedMeasurement(e.value)}
-                options={cities}
+                options={measurments}
                 optionLabel="name"
                 className="w-full md:w-10rem"
               />
