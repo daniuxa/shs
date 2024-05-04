@@ -1,4 +1,4 @@
-name: Publish 🚀
+name: Backend CI/CD
 
 on:
   workflow_dispatch:
