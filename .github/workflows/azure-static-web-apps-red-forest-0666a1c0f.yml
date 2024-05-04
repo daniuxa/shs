@@ -9,7 +9,7 @@ on:
     branches:
       - ci-cd-backend
 env:
-  REACT_APP_API_URL: http://localhost:5009/api
+  REACT_APP_API_URL: https://secrets-hys.azurewebsites.net/api
 
 jobs:
   build_and_deploy_job:
