@@ -84,7 +84,7 @@ export default function SecretViewer() {
       <div className="flex align-items-center justify-content-center font-bold m-2">
         <Button label="Open" onClick={open} />
       </div>
-      {content !== null && content.length != 0 && (
+      {content !== null && content.length !== 0 && (
         <div className="flex align-items-center justify-content-center font-bold m-2">
           <div className="flex flex-column gap-2">
             <label htmlFor="username">Secret content</label>
