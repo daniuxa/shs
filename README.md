@@ -16,7 +16,7 @@ Then click review and create
 
 When web app is created, go to the deployment center and select your repository and branch. Then click save.
 
-![image](https://github.com/daniuxa/shs/assets/83185827/05cde61c-92f2-44fd-bfa6-1c50843268fa)
+![Untitled1](https://github.com/daniuxa/shs/assets/83185827/3cbda816-5658-4a8d-8831-6a4a88148fa8)
 
 In your repository on GitHub is generated .yml file with the script to deploy your backend on Azure. On the Actions page you can find the workflow that indicate status of deploying your app to Azure.
 
@@ -32,7 +32,7 @@ On Azure select App Service and you should to create Static Web App.
 
 On the creation page, select your GitHub account, repository and app location, where is located your frontend application. Then create it.
 
-![image](https://github.com/daniuxa/shs/assets/83185827/292f2353-72fb-4692-99fa-066e4c38e0a4)
+![image](https://github.com/daniuxa/shs/assets/83185827/8ed72fbe-a854-475d-9384-02e08d82b0a9)
 
 When static web app is created, go to your repository on GitHub, there you can find .yml file with the script to deploy your frontend on Azure. On the Actions page you can find the workflow that indicate status of deploying your app to Azure.
 
